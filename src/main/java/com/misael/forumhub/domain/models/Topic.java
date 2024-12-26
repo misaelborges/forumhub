@@ -31,7 +31,7 @@ public class Topic {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "topic_status")
-    private TopicStatus status;
+    private TopicStatus status = TopicStatus.UNRESOLVED;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
