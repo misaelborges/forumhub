@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ITopicRepository extends JpaRepository<Topic, Long> {
@@ -20,4 +21,6 @@ public interface ITopicRepository extends JpaRepository<Topic, Long> {
                 WHERE c.name = :nameCourse AND YEAR(t.creationDate) = :year
             """)
     List<Topic> findByCourseNameAndYear(String nameCourse, Integer year);
+
+    Optional<Topic> findByTitleIgnoreCaseAndMessageIgnoreCase(String title, String message);
 }
